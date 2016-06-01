@@ -1,45 +1,56 @@
 package com.rdiaz.varios;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
 
 public class MovimientosBancoGeneral {
-	static String actualFile = "C:\\Users\\rdiaz\\Dropbox\\Archivos\\Movimientos Banco 2014 2016.txt";
+    static String patronDelNombre = "C:\\Users\\rdiaz\\Dropbox\\Archivos\\Movimientos {tipo} {fechaInicial} {fechaFinal}.txt";
 
-	public static void main(String[] args) {
-		Chronometer c = new Chronometer();
-		c.start();
-		readIDs();
-		c.stop();
-		System.out.println(c.getTime());
-	}
+    public static void main(String[] args) {
+        Chronometer c = new Chronometer();
+        c.start();
+        leerArchivo("Tarjeta", 2015, 2016);
+        c.stop();
+        System.out.println(c.getTime());
+    }
 
-	public static void readIDs()
-	{
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(actualFile));
-			String line;
-			boolean isFirst = true;
+    public static void leerArchivo(String tipo, int fechaInicial, int fechaFinal) {
+        try {
+            String nombreDelArchivo = patronDelNombre.replace("{tipo}", tipo).replace("{fechaInicial}", String.valueOf(fechaInicial)).replace("{fechaFinal}", String.valueOf(fechaFinal));
+            BufferedReader br = new BufferedReader(new FileReader(nombreDelArchivo));
+            String linea;
 
-			while((line = br.readLine()) != null){
-				String str[] = line.split(";");
-				if("ACH - VENTAS Y MERCADE".equals(str[3]) || str[3].indexOf("0430019695096") > 0 || isFirst) {
-					for(String string : str) {
-						System.out.print(string + "\t");
-					}
-					System.out.println();
-				}
-				isFirst = false;
-			}
-			br.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+            while((linea = br.readLine()) != null){
+                String arreglo[] = linea.split(";");
+                for(String string : arreglo) System.out.print(string + "\t");
+                System.out.println();
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void leerArchivoOtero() {
+        try {
+            String nombreDelArchivo = patronDelNombre.replace("{tipo}", "Banco").replace("{fechaInicial}", "2014").replace("{fechaFinal}", "2016");
+            BufferedReader br = new BufferedReader(new FileReader(nombreDelArchivo));
+            String linea;
+            boolean esLaPrimeraLinea = true;
+
+            while((linea = br.readLine()) != null){
+                String arreglo[] = linea.split(";");
+                if("ACH - VENTAS Y MERCADE".equals(arreglo[3]) || arreglo[3].indexOf("0430019695096") > 0 || esLaPrimeraLinea) {
+                    for(String string : arreglo) System.out.print(string + "\t");
+                    System.out.println();
+                }
+                esLaPrimeraLinea = false;
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
