@@ -1,4 +1,4 @@
-package com.ts.configuracion;
+package com.rdiaz.varios;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

@@ -1,4 +1,4 @@
-package com.ts.configuracion;
+package com.rdiaz.varios;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -21,8 +21,7 @@ public class MovimientosBancoGeneral {
 	{
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(actualFile));
-			String line = null;
-			HashMap<String, String> map = new HashMap<String, String>();
+			String line;
 			boolean isFirst = true;
 
 			while((line = br.readLine()) != null){
@@ -34,11 +33,8 @@ public class MovimientosBancoGeneral {
 					System.out.println();
 				}
 				isFirst = false;
-				//map.put(str[0], str[5]);
 			}
 			br.close();
-//			System.out.println(map);
-//			System.out.println(map.size());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

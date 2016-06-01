@@ -1,4 +1,4 @@
-package com.ts.configuracion;
+package com.rdiaz.varios;
 
 public class CifradoSimetrico {
 

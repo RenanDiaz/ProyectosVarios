@@ -1,4 +1,4 @@
-package com.ts.configuracion;
+package com.rdiaz.varios;
 
 public final class Chronometer{
     private long begin, end;
