@@ -5,14 +5,14 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class MovimientosBancoGeneral {
-    static String patronDelNombre = "C:\\Users\\rdiaz\\Dropbox\\Archivos\\Movimientos {tipo} {fechaInicial} {fechaFinal}.txt";
+    static String patronDelNombre = "C:\\Users\\rdiaz\\Dropbox\\Documents\\Archivos\\Movimientos {tipo} {fechaInicial} {fechaFinal}.txt";
 
     public static void main(String[] args) {
         Chronometer c = new Chronometer();
         c.start();
-        leerArchivo("Tarjeta", 2015, 2016);
+        leerArchivo("Banco", 2014, 2016);
         c.stop();
-        System.out.println(c.getTime());
+        System.out.printf("%dms%n", c.getTime());
     }
 
     public static void leerArchivo(String tipo, int fechaInicial, int fechaFinal) {
@@ -20,12 +20,15 @@ public class MovimientosBancoGeneral {
             String nombreDelArchivo = patronDelNombre.replace("{tipo}", tipo).replace("{fechaInicial}", String.valueOf(fechaInicial)).replace("{fechaFinal}", String.valueOf(fechaFinal));
             BufferedReader br = new BufferedReader(new FileReader(nombreDelArchivo));
             String linea;
+            int contador = 0;
 
             while((linea = br.readLine()) != null){
                 String arreglo[] = linea.split(";");
                 for(String string : arreglo) System.out.print(string + "\t");
                 System.out.println();
+                contador++;
             }
+            System.out.println("Cuenta: " + contador);
             br.close();
         } catch (IOException e) {
             e.printStackTrace();
