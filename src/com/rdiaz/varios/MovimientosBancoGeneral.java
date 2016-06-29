@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class MovimientosBancoGeneral {
-    static String patronDelNombre = "C:\\Users\\rdiaz\\Dropbox\\Documents\\Archivos\\Movimientos {tipo} {fechaInicial} {fechaFinal}.txt";
+    private static String patronDelNombre = "C:\\Users\\rdiaz\\Dropbox\\Documents\\Archivos\\Movimientos {tipo} {fechaInicial} {fechaFinal}.txt";
 
     public static void main(String[] args) {
         Chronometer c = new Chronometer();
@@ -15,7 +15,7 @@ public class MovimientosBancoGeneral {
         System.out.printf("%dms%n", c.getTime());
     }
 
-    public static void leerArchivo(String tipo, int fechaInicial, int fechaFinal) {
+    private static void leerArchivo(String tipo, int fechaInicial, int fechaFinal) {
         try {
             String nombreDelArchivo = patronDelNombre.replace("{tipo}", tipo).replace("{fechaInicial}", String.valueOf(fechaInicial)).replace("{fechaFinal}", String.valueOf(fechaFinal));
             BufferedReader br = new BufferedReader(new FileReader(nombreDelArchivo));
@@ -35,7 +35,7 @@ public class MovimientosBancoGeneral {
         }
     }
 
-    public static void leerArchivoOtero() {
+    private static void leerArchivoOtero() {
         try {
             String nombreDelArchivo = patronDelNombre.replace("{tipo}", "Banco").replace("{fechaInicial}", "2014").replace("{fechaFinal}", "2016");
             BufferedReader br = new BufferedReader(new FileReader(nombreDelArchivo));
