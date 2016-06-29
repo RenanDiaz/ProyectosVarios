@@ -2,10 +2,10 @@ package com.rdiaz.varios;
 
 import java.util.ArrayList;
 
-public class CifradoCesar
+class CifradoCesar
 {
-	static String abc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-	static ArrayList<String> abecedario = new ArrayList<>();
+	private static final String abc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+	private static final ArrayList<String> abecedario = new ArrayList<>();
 
 	public static void main(String[] args) {
 		llenarArrayList();
@@ -24,7 +24,7 @@ public class CifradoCesar
 		}
 	}
 
-	static String cifrar(String palabra, int rot)
+	private static String cifrar(String palabra, int rot)
 	{
 		String palabraCifrada = "";
 		for(char caracter : palabra.toUpperCase().toCharArray())
@@ -43,7 +43,7 @@ public class CifradoCesar
 		return palabraCifrada;
 	}
 
-	static String descifrar(String palabra, int rot)
+	private static String descifrar(String palabra, int rot)
 	{
 		String palabraDescifrada = "";
 		for(char caracter : palabra.toUpperCase().toCharArray())

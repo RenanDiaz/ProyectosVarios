@@ -1,15 +1,14 @@
 package com.rdiaz.varios;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class FLO_ConnectIDReader {
+class FLO_ConnectIDReader {
 	
 	static String testFile = "C:\\Users\\Renan.Diaz\\Documents\\csv_sample_file.txt";
-	static String actualFile = "C:\\Users\\rdiaz\\Documents\\CurrentFloConnectIDs.csv";
+	private static final String actualFile = "C:\\Users\\rdiaz\\Documents\\CurrentFloConnectIDs.csv";
 
 	public static void main(String[] args) {
 		Chronometer c = new Chronometer();
@@ -19,12 +18,12 @@ public class FLO_ConnectIDReader {
 		System.out.println(c.getTime());
 	}
 
-	public static void readIDs()
+	private static void readIDs()
 	{
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(actualFile));
-			String line = null;
-			HashMap<String, String> map = new HashMap<String, String>();
+			String line;
+			HashMap<String, String> map = new HashMap<>();
 			br.readLine();
 
 			while((line = br.readLine()) != null){
@@ -32,10 +31,8 @@ public class FLO_ConnectIDReader {
 				map.put(str[0], str[5]);
 			}
 			br.close();
-//			System.out.println(map);
-//			System.out.println(map.size());
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println(map);
+			System.out.println(map.size());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

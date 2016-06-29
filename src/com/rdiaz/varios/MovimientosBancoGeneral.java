@@ -4,13 +4,19 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class MovimientosBancoGeneral {
-    private static String patronDelNombre = "C:\\Users\\rdiaz\\Dropbox\\Documents\\Archivos\\Movimientos {tipo} {fechaInicial} {fechaFinal}.txt";
+class MovimientosBancoGeneral {
+    private static final String patronDelNombre = "C:\\Users\\rdiaz\\Dropbox\\Documents\\Archivos\\Movimientos {tipo} {fechaInicial} {fechaFinal}.txt";
 
     public static void main(String[] args) {
         Chronometer c = new Chronometer();
         c.start();
-        leerArchivo("Banco", 2014, 2016);
+        String cuenta = "Banco";
+        if("Banco".equals(cuenta))
+            leerArchivo("Banco", 2014, 2016);
+        else if("Tarjeta".equals(cuenta))
+            leerArchivo("Tarjeta", 2015, 2016);
+        else
+            leerArchivoOtero();
         c.stop();
         System.out.printf("%dms%n", c.getTime());
     }

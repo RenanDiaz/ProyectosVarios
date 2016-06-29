@@ -1,8 +1,8 @@
 package com.rdiaz.varios;
 
-public class CifradoSimetrico {
+class CifradoSimetrico {
 
-	static String keys = "renan.diaz";
+	private static final String keys = "renan.diaz";
 
 	public static void main(String[] args)
 	{
@@ -13,7 +13,7 @@ public class CifradoSimetrico {
 		System.out.println(descifrada);
 	}
 
-	static String cifrar(String codes)
+	private static String cifrar(String codes)
 	{
 		StringBuilder result = new StringBuilder();
 
@@ -42,7 +42,7 @@ public class CifradoSimetrico {
 		return result.toString();
 	}
 
-	static String descifrar(String codes)
+	private static String descifrar(String codes)
 	{
 		StringBuilder result = new StringBuilder();
 
