@@ -6,9 +6,8 @@ import java.io.IOException;
 import java.util.HashMap;
 
 class FLO_ConnectIDReader {
-	
-	static String testFile = "C:\\Users\\Renan.Diaz\\Documents\\csv_sample_file.txt";
-	private static final String actualFile = "C:\\Users\\rdiaz\\Documents\\CurrentFloConnectIDs.csv";
+
+	private static final String filename = String.format("%s\\Documents\\CurrentFloConnectIDs.csv", System.getProperty("user.home"));
 
 	public static void main(String[] args) {
 		Chronometer c = new Chronometer();
@@ -21,7 +20,7 @@ class FLO_ConnectIDReader {
 	private static void readIDs()
 	{
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(actualFile));
+			BufferedReader br = new BufferedReader(new FileReader(filename));
 			String line;
 			HashMap<String, String> map = new HashMap<>();
 			br.readLine();

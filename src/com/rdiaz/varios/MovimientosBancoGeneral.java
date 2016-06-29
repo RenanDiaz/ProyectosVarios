@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 class MovimientosBancoGeneral {
-    private static final String patronDelNombre = "C:\\Users\\rdiaz\\Dropbox\\Documents\\Archivos\\Movimientos {tipo} {fechaInicial} {fechaFinal}.txt";
+    private static final String patronDelNombre = String.format("%s\\Dropbox\\Documents\\Archivos\\Movimientos {tipo} {fechaInicial} {fechaFinal}.txt", System.getProperty("user.home"));
 
     public static void main(String[] args) {
         Chronometer c = new Chronometer();
